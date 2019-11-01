@@ -21,7 +21,7 @@ class Solution:
 
         head = None
 
-        for _ in range(max(len(stackL1), len(stackL2))):
+        while len(stackL1) > 0 or len(stackL2) > 0 or carry != 0:
             s1 = s2 = 0
             if len(stackL1) != 0:
                 s1 = stackL1.pop()
@@ -35,11 +35,6 @@ class Solution:
             head = new_node
 
             carry = (int)((s1 + s2 + carry) / 10)
-
-        if carry > 0:
-            new_node = ListNode(carry)
-            new_node.next = head
-            head = new_node
 
         return head
 
