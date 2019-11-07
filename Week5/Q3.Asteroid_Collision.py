@@ -1,19 +1,19 @@
 class Solution:
     def asteroidCollision(self, asteroids):
-        self.stack = []
+        stack = []
         
         for new in asteroids:
-            while self.stack and 0 < self.stack[-1] and new < 0 :
-                if self.stack[-1] < -new:
-                    self.stack.pop()
+            while stack and 0 < stack[-1] and new < 0 :
+                if stack[-1] < -new:
+                    stack.pop()
                     continue
-                elif self.stack[-1] == -new:
-                    self.stack.pop()
+                elif stack[-1] == -new:
+                    stack.pop()
                 break
             else:
-                self.stack.append(new)
+                stack.append(new)
                 
-        return self.stack
+        return stack
 
 
     def asteroidCollision2(self, asteroids):
@@ -32,4 +32,20 @@ class Solution:
         if not changed:
             return asteroids
 
-        return self.asteroidCollision([val for val in asteroids if val])
+        return self.asteroidCollision2([val for val in asteroids if val])
+
+
+    def asteroidCollision3(self, asteroids):
+        stack = []
+        for number in asteroids:
+            stack.append(number)
+            while len(stack)>1 and stack[-1] < 0 and stack[-2] > 0:
+                last = stack.pop()
+                if -last > stack[-1]:
+                    stack[-1] = last
+                elif -last == stack[-1]:
+                    stack.pop()
+        
+        return stack
+
+
