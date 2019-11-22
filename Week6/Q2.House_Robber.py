@@ -1,4 +1,6 @@
 class Solution:
+
+    ''' O(N) / O(1) '''
     def rob(self, nums):
         
         if len(nums) == 0 : return 0
