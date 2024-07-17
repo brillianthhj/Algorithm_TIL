@@ -1,0 +1,1 @@
+add_executable(multi_ex main.cpp)
